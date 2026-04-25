@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Warung Mimi - Pemesanan Online Cimol Setan & Minuman Segar</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌶️</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-text">Warung Mimi</div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-pepper-hot"></i>
+            </div>
+            <div class="logo-text">
+              <h1>Warung Mimi</h1>
+              <p class="tagline">Cimol Setan & Minuman Segar</p>
+            </div>
+          </div>
+
+          <div class="nav-links">
+            <a href="#menu" class="nav-link"
+              ><i class="fas fa-utensils"></i> Menu</a
+            >
+            <a href="#order" class="nav-link"
+              ><i class="fas fa-shopping-cart"></i> Pesan</a
+            >
+            <a href="#contact" class="nav-link"
+              ><i class="fas fa-phone-alt"></i> Kontak</a
+            >
+          </div>
+
+          <div class="nav-actions">
+            <button
+              class="btn-save-customer"
+              id="saveCustomerBtn"
+              title="Simpan Data Pelanggan"
+            >
+              <i class="fas fa-user-check"></i>
+            </button>
+            <div class="cart-icon-container">
+              <button class="cart-icon" id="cartToggle">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+              </button>
+            </div>
+          </div>
+
+          <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Sidebar Cart -->
+    <div class="mobile-cart-sidebar" id="mobileCart">
+      <div class="cart-sidebar-header">
+        <h3><i class="fas fa-shopping-bag"></i> Keranjang Pesanan</h3>
+        <button class="close-cart" id="closeCart">&times;</button>
+      </div>
+      <div class="cart-sidebar-content">
+        <div class="cart-items-mobile" id="cartItemsMobile">
+          <p class="empty-cart-mobile">Keranjang masih kosong</p>
+        </div>
+        <div class="cart-totals-mobile">
+          <div class="total-row">
+            <span>Subtotal</span>
+            <span id="subtotalMobile">Rp 0</span>
+          </div>
+          <div class="total-row grand-total">
+            <span>Total</span>
+            <span id="totalMobile">Rp 0</span>
+          </div>
+        </div>
+        <button class="checkout-btn-mobile" id="previewStrukMobile">
+          <i class="fas fa-receipt"></i> Lihat Struk
+        </button>
+        <button class="whatsapp-btn-mobile" id="checkoutMobile">
+          <i class="fab fa-whatsapp"></i> Kirim ke WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h2 class="hero-title">
+              Nikmati Pedasnya <span class="highlight">Cimol Setan</span> &
+              Segarnya Minuman Kami
+            </h2>
+            <p class="hero-subtitle">
+              Warung sederhana yang menyediakan aneka makanan dan minuman dengan
+              harga terjangkau, cocok untuk santai dan kumpul bersama.
+            </p>
+
+            <div class="hero-features">
+              <div class="feature">
+                <i class="fas fa-motorcycle"></i>
+                <span>Pesan Antar</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-clock"></i>
+                <span>Pesanan Cepat</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-receipt"></i>
+                <span>Struk WhatsApp</span>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <a href="#menu" class="btn-primary">
+                <i class="fas fa-fire"></i> Lihat Menu
+              </a>
+              <button class="btn-secondary" id="loadCustomerData">
+                <i class="fas fa-user-clock"></i> Isi Data Otomatis
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <div class="floating-image">
+              <img src="cimolsetan.png" alt="Cimol Setan" class="main-image" />
+              <div class="floating-item item-1">
+                <img src="minuman.png" alt="Minuman Segar" />
+              </div>
+              <div class="floating-item item-2">
+                <img src="piti.png" alt="Sosis Bakar" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Menu Favorit</h2>
+          <p class="section-subtitle">
+            Pilih menu favoritmu, kami siap antar ke rumahmu
+          </p>
+        </div>
+
+        <!-- Cimol & Bakso -->
+        <div class="menu-category">
+          <div class="category-header">
+            <h3>
+              <i class="fas fa-pepper-hot"></i> Cimol Setan & Bakso Goreng
+            </h3>
+            <p class="category-description">
+              Level pedas bisa disesuaikan dengan selera
+            </p>
+          </div>
+
+          <div class="menu-grid">
+            <!-- Item 1 - Cimol Setan -->
+            <div class="menu-card">
+              <div class="menu-image">
+                <img src="cimolsetan.png" alt="Cimol Setan" />
+                <div class="menu-price">Rp 8.000</div>
+                <div class="menu-badge">Pedas</div>
+              </div>
+              <div class="menu-info">
+                <h4>Cimol Setan</h4>
+                <p class="menu-description">
+                  Cimol Setan Khas Indramayu Yang Dipadu Dengan Bumbu Terasi
+                  Khas Mimi
+                </p>
+                <div class="menu-actions">
+                  <button
+                    class="btn-add-to-cart"
+                    data-name="Cimol Setan"
+                    data-price="8000"
+                    data-img="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80"
+                  >
+                    <i class="fas fa-plus"></i> Tambah
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 - Mix Cimol + Piti Piti -->
+            <div class="menu-card">
+              <div class="menu-image">
+                <img src="piti.png" alt="Mix Cimol + Piti Piti" />
+                <div class="menu-price">Rp 10.000</div>
+                <div class="menu-badge hot">Best Seller</div>
+              </div>
+              <div class="menu-info">
+                <h4>Mix Cimol + Piti Piti</h4>
+                <p class="menu-description">
+                  Perpaduan Tekstur yang menarik antara cimol & Piti - Piti
+                </p>
+                <div class="menu-actions">
+                  <button
+                    class="btn-add-to-cart"
+                    data-name="Mix Cimol + Piti Piti"
+                    data-price="10000"
+                    data-img="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80"
+                  >
+                    <i class="fas fa-plus"></i> Tambah
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 - Baso Goreng -->
+            <div class="menu-card">
+              <div class="menu-image">
+                <img src="baso.png" alt="Baso Goreng" />
+                <div class="menu-price">Rp 8.000</div>
+                <div class="menu-badge super-hot">Favorite</div>
+              </div>
+              <div class="menu-info">
+                <h4>Baso Goreng</h4>
+                <p class="menu-description">
+                  Baso goreng yang dipadu dengan bumbu pedas
+                </p>
+                <div class="menu-actions">
+                  <button
+                    class="btn-add-to-cart"
+                    data-name="Baso Goreng"
+                    data-price="8000"
+                    data-img="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80"
+                  >
+                    <i class="fas fa-plus"></i> Tambah
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Minuman -->
+        <div class="menu-category">
+          <div class="category-header">
+            <h3><i class="fas fa-glass-cheers"></i> Minuman Segar</h3>
+            <p class="category-description">
+              Temani cimol setan dengan minuman segar pilihan
+            </p>
+          </div>
+
+          <div class="menu-grid">
+            <!-- Minuman 1 - Cappucino Cincau -->
+            <div class="menu-card">
+              <div class="menu-image">
+                <img src="cappucino.png" alt="Cappucino Cincau" />
+                <div class="menu-price">Rp 6.000</div>
+                <div class="menu-badge">Segar</div>
+              </div>
+              <div class="menu-info">
+                <h4>Cappucino Cincau</h4>
+                <p class="menu-description">
+                  Minuman cappuccino manis dengan cincau segar, dingin dan
+                  menyegarkan.
+                </p>
+                <div class="menu-actions">
+                  <button
+                    class="btn-add-to-cart"
+                    data-name="Cappucino Cincau"
+                    data-price="6000"
+                    data-img="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80"
+                  >
+                    <i class="fas fa-plus"></i> Tambah
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Minuman 2 - Pop Ice -->
+            <div class="menu-card">
+              <div class="menu-image">
+                <img src="popice.png" alt="Pop Ice" />
+                <div class="menu-price">Rp 5.000</div>
+                <div class="menu-badge">Es</div>
+              </div>
+              <div class="menu-info">
+                <h4>Pop Ice</h4>
+                <p class="menu-description">
+                  Minuman dingin aneka rasa yang manis dan menyegarkan.
+                </p>
+                <div class="menu-actions">
+                  <button
+                    class="btn-add-to-cart"
+                    data-name="Pop Ice"
+                    data-price="5000"
+                    data-img="https://images.unsplash.com/photo-1628992682633-bf2d40cb595f?auto=format&fit=crop&w=600&q=80"
+                  >
+                    <i class="fas fa-plus"></i> Tambah
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Minuman 3 - Es Teh Asli -->
+            <div class="menu-card">
+              <div class="menu-image">
+                <img src="teh.png" alt="Es Teh Asli" />
+                <div class="menu-price">Rp 3.000</div>
+                <div class="menu-badge">Teh</div>
+              </div>
+              <div class="menu-info">
+                <h4>Es Teh Asli</h4>
+                <p class="menu-description">
+                  Teh dingin segar, manis dan menyegarkan.
+                </p>
+                <div class="menu-actions">
+                  <button
+                    class="btn-add-to-cart"
+                    data-name="Es Teh Asli"
+                    data-price="3000"
+                    data-img="https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=600&q=80"
+                  >
+                    <i class="fas fa-plus"></i> Tambah
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order-section" id="order">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Pesan Sekarang</h2>
+          <p class="section-subtitle">
+            Isi data Anda dan pesanan akan dikirim ke WhatsApp kami
+          </p>
+        </div>
+
+        <div class="order-container">
+          <div class="order-form-container">
+            <div class="order-form-header">
+              <h3><i class="fas fa-user-edit"></i> Data Pemesanan</h3>
+              <p>Data akan disimpan untuk pemesanan berikutnya</p>
+            </div>
+
+            <form id="orderForm">
+              <div class="form-group">
+                <label for="name"
+                  ><i class="fas fa-user"></i> Nama Lengkap</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Contoh: Budi Santoso"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone"
+                  ><i class="fab fa-whatsapp"></i> Nomor WhatsApp</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="Contoh: 085926406250"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="address"
+                  ><i class="fas fa-map-marker-alt"></i> Alamat Lengkap</label
+                >
+                <textarea
+                  id="address"
+                  rows="3"
+                  placeholder="Desa UjungJaya, Depan Makam"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="notes"
+                  ><i class="fas fa-sticky-note"></i> Catatan Pesanan
+                  (Opsional)</label
+                >
+                <textarea
+                  id="notes"
+                  rows="2"
+                  placeholder="Contoh: Level pedas, tambahan saus, dll."
+                ></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn-preview" id="previewStruk">
+                  <i class="fas fa-eye"></i> Preview Struk
+                </button>
+                <button type="button" class="btn-save-data" id="saveDataBtn">
+                  <i class="fas fa-save"></i> Simpan Data
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="order-summary-container">
+            <div class="order-summary-header">
+              <h3><i class="fas fa-receipt"></i> Struk Pemesanan</h3>
+              <div class="receipt-actions">
+                <button class="btn-print-struk" id="printStruk">
+                  <i class="fas fa-print"></i>
+                </button>
+                <button class="btn-clear-cart" id="clearCart">
+                  <i class="fas fa-trash-alt"></i> Hapus Semua
+                </button>
+              </div>
+            </div>
+
+            <div class="order-summary-content">
+              <!-- Struk Preview -->
+              <div class="receipt-preview" id="receiptPreview">
+                <div class="receipt-header">
+                  <div class="receipt-logo">
+                    <i class="fas fa-pepper-hot"></i>
+                  </div>
+                  <div class="receipt-title">
+                    <h3>WARUNG MIMI</h3>
+                    <p>Cimol Setan & Minuman Segar</p>
+                  </div>
+                </div>
+
+                <div class="receipt-customer-info">
+                  <div class="info-row">
+                    <span>Pelanggan:</span>
+                    <span id="receiptName">-</span>
+                  </div>
+                  <div class="info-row">
+                    <span>Telepon:</span>
+                    <span id="receiptPhone">-</span>
+                  </div>
+                  <div class="info-row">
+                    <span>Alamat:</span>
+                    <span id="receiptAddress">-</span>
+                  </div>
+                  <div class="info-row">
+                    <span>Tanggal:</span>
+                    <span id="receiptDate">-</span>
+                  </div>
+                </div>
+
+                <div class="receipt-items">
+                  <div class="receipt-items-header">
+                    <span>Item</span>
+                    <span>Qty</span>
+                    <span>Total</span>
+                  </div>
+                  <div class="receipt-items-body" id="receiptItemsBody">
+                    <div class="empty-receipt">
+                      <i class="fas fa-shopping-bag"></i>
+                      <p>Belum ada pesanan</p>
+                      <p>Silakan pilih menu dari daftar</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="receipt-totals">
+                  <div class="total-row">
+                    <span>Subtotal</span>
+                    <span id="receiptSubtotal">Rp 0</span>
+                  </div>
+                  <div class="total-row grand-total">
+                    <span>TOTAL</span>
+                    <span id="receiptTotal">Rp 0</span>
+                  </div>
+                </div>
+
+                <div class="receipt-footer">
+                  <p>
+                    <i class="fas fa-info-circle"></i> Pembayaran tunai saat
+                    pesanan diterima (COD)
+                  </p>
+                  <p>
+                    <i class="fas fa-clock"></i> Estimasi pengiriman: 30-45
+                    menit
+                  </p>
+                  <p class="thank-you">Terima kasih atas pesanannya! 😊</p>
+                </div>
+              </div>
+
+              <div class="order-actions">
+                <button class="btn-checkout" id="checkoutBtn">
+                  <i class="fab fa-whatsapp"></i> Kirim Struk ke WhatsApp
+                </button>
+                <p class="payment-note">
+                  <i class="fas fa-info-circle"></i> Struk akan dikirim sebagai
+                  format yang rapi
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Hubungi Kami</h2>
+          <p class="section-subtitle">Kami siap melayani pesanan Anda</p>
+        </div>
+
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div class="contact-details">
+                <h4>WhatsApp Order</h4>
+                <p>+62 859-2640-6250</p>
+                <p>Klik untuk langsung chat</p>
+              </div>
+              <a
+                href="https://wa.me/6285926406250?text=Halo%20Warung%20Mimi%2C%20saya%20ingin%20memesan"
+                target="_blank"
+                class="btn-whatsapp"
+              >
+                <i class="fab fa-whatsapp"></i> Chat Sekarang
+              </a>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Jam Operasional</h4>
+                <p>Setiap Hari</p>
+                <p>10:00 - 22:00 WIB</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Lokasi</h4>
+                <p>Desa UjungJaya</p>
+                <p>Depan Makam</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-container">
+            <div class="map-placeholder">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>📍 Desa UjungJaya, Depan Makam</p>
+              <p>📞 0859-2640-6250</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <i class="fas fa-pepper-hot"></i>
+              <div class="footer-logo-text">
+                <h3>Warung Mimi</h3>
+                <p>Cimol Setan & Minuman Segar</p>
+              </div>
+            </div>
+            <p class="footer-description">
+              Warung sederhana yang menyediakan aneka makanan dan minuman dengan
+              harga terjangkau, cocok untuk santai dan kumpul bersama.
+            </p>
+
+            <div class="footer-social">
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Menu Cepat</h4>
+            <ul>
+              <li>
+                <a href="#menu"
+                  ><i class="fas fa-chevron-right"></i> Lihat Menu</a
+                >
+              </li>
+              <li>
+                <a href="#order"
+                  ><i class="fas fa-chevron-right"></i> Pesan Sekarang</a
+                >
+              </li>
+              <li>
+                <a href="#contact"
+                  ><i class="fas fa-chevron-right"></i> Hubungi Kami</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4>Dapatkan Promo</h4>
+            <p>Daftar untuk mendapatkan informasi promo terbaru</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Email Anda" required />
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 Warung Mimi. Semua hak dilindungi.</p>
+          <p>Website Pemesanan Online dengan Struk WhatsApp</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/6285926406250?text=Halo%20Warung%20Mimi%2C%20saya%20ingin%20memesan"
+      target="_blank"
+      class="whatsapp-float"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Modal Struk -->
+    <div class="modal" id="strukModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-receipt"></i> Preview Struk</h3>
+          <button class="close-modal" id="closeStrukModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-struk" id="modalStrukContent">
+            <!-- Struk akan dimuat di sini -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="printModalStruk">
+            <i class="fas fa-print"></i> Cetak Struk
+          </button>
+          <button class="btn-primary" id="sendModalStruk">
+            <i class="fab fa-whatsapp"></i> Kirim ke WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
